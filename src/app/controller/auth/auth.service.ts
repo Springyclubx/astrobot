@@ -6,7 +6,7 @@ import { Retorno } from '../../model/retorno';
 import { LoginUser } from '../../model/login-user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
 

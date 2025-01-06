@@ -22,6 +22,7 @@ export class LoginAppComponent {
 
   login(): void {
     this.authService.login(this.loginUser).subscribe(
+    
       (pToken) => {
         if (pToken != null) {
           this.displayMessage({
