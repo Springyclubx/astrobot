@@ -1,66 +1,91 @@
 /* Estiliza a área principal do formulário */
 .container {
-    width: 100%;
-    max-width: 400px; /* Limita a largura máxima */
-    margin: 50px auto; /* Centraliza horizontalmente */
-    padding: 20px; /* Espaçamento interno */
-    background-color: #f9f9f9; /* Fundo claro */
-    border-radius: 8px; /* Bordas arredondadas */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
-    font-family: Arial, sans-serif; /* Fonte padrão */
-  }
-  
-  /* Título do formulário */
-  .container h2 {
-    text-align: center; /* Centraliza o texto */
-    margin-bottom: 20px; /* Espaçamento inferior */
-    color: #333; /* Cor do texto */
-    font-size: 24px; /* Tamanho do texto */
-  }
-  
-  /* Estiliza os rótulos dos campos */
-  .container label {
-    display: block; /* Coloca o texto em uma linha separada */
-    margin-bottom: 8px; /* Espaçamento inferior */
-    font-weight: bold; /* Negrito para destaque */
-    color: #555; /* Cor do texto */
-  }
-  
-  /* Estiliza os campos de entrada */
-  .container input[type="text"] {
-    width: 100%; /* Ocupa toda a largura do container */
-    padding: 10px; /* Espaçamento interno */
-    margin-bottom: 15px; /* Espaçamento entre os campos */
-    border: 1px solid #ccc; /* Bordas cinzas */
-    border-radius: 5px; /* Bordas arredondadas */
-    box-sizing: border-box; /* Inclui padding e borda no tamanho total */
-    font-size: 16px; /* Tamanho da fonte */
-    background-color: #fff; /* Fundo branco */
-  }
-  
-  /* Estiliza o botão */
-  .container button {
-    width: 100%; /* Ocupa toda a largura do container */
-    padding: 10px; /* Espaçamento interno */
-    font-size: 16px; /* Tamanho do texto */
-    font-weight: bold; /* Texto em negrito */
-    color: #fff; /* Texto branco */
-    background-color: #007bff; /* Fundo azul */
-    border: none; /* Remove bordas */
-    border-radius: 5px; /* Bordas arredondadas */
-    cursor: pointer; /* Aparece a mãozinha ao passar o mouse */
-    transition: background-color 0.3s ease; /* Suaviza a transição de cor */
-  }
-  
-  /* Efeito hover no botão */
-  .container button:hover {
-    background-color: #0056b3; /* Azul mais escuro */
-  }
-  
-  /* Adiciona um foco visual nos campos de entrada */
-  .container input[type="text"]:focus {
-    border-color: #007bff; /* Bordas azuis */
-    outline: none; /* Remove o contorno padrão */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Efeito de brilho */
-  }
-  
+  width: 100%;
+  max-width: 400px; /* Limita a largura máxima */
+  margin: 50px auto; /* Centraliza horizontalmente */
+  padding: 20px; /* Espaçamento interno */
+  background-color: #f9f9f9; /* Fundo claro */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+  font-family: Arial, sans-serif; /* Fonte padrão */
+}
+
+/* Título do formulário */
+.container h2 {
+  text-align: center; /* Centraliza o texto */
+  margin-bottom: 20px; /* Espaçamento inferior */
+  color: #333; /* Cor do texto */
+  font-size: 24px; /* Tamanho do texto */
+}
+
+/* Estiliza os rótulos dos campos */
+.container label {
+  display: block; /* Coloca o texto em uma linha separada */
+  margin-bottom: 8px; /* Espaçamento inferior */
+  font-weight: bold; /* Negrito para destaque */
+  color: #555; /* Cor do texto */
+}
+
+/* Estiliza os campos de entrada (texto e senha) */
+.container input[type="text"],
+.container input[type="password"] {
+  width: 100%; /* Ocupa toda a largura do container */
+  padding: 10px; /* Espaçamento interno */
+  margin-bottom: 15px; /* Espaçamento entre os campos */
+  border: 1px solid #ccc; /* Bordas cinzas */
+  border-radius: 5px; /* Bordas arredondadas */
+  box-sizing: border-box; /* Inclui padding e borda no tamanho total */
+  font-size: 16px; /* Tamanho da fonte */
+  background-color: #fff; /* Fundo branco */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transições suaves */
+}
+
+/* Adiciona um foco visual nos campos de entrada */
+.container input[type="text"]:focus,
+.container input[type="password"]:focus {
+  border-color: #007bff; /* Bordas azuis */
+  outline: none; /* Remove o contorno padrão */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Efeito de brilho */
+}
+
+/* Estiliza o botão */
+.container button {
+  width: 100%; /* Ocupa toda a largura do container */
+  padding: 10px; /* Espaçamento interno */
+  font-size: 16px; /* Tamanho do texto */
+  font-weight: bold; /* Texto em negrito */
+  color: #fff; /* Texto branco */
+  background-color: #007bff; /* Fundo azul */
+  border: none; /* Remove bordas */
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Aparece a mãozinha ao passar o mouse */
+  transition: background-color 0.3s ease; /* Suaviza a transição de cor */
+}
+
+/* Efeito hover no botão */
+.container button:hover {
+  background-color: #0056b3; /* Azul mais escuro */
+}
+
+/* Mensagens de status */
+.status-message {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Estilo para mensagens de sucesso */
+.status-message.success {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+/* Estilo para mensagens de erro */
+.status-message.error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
