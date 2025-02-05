@@ -1,0 +1,5 @@
+export interface repair {
+    id: Number,
+    quantityUsed: Number,
+    description: String
+}

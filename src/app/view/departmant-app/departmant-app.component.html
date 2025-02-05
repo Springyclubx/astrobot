@@ -1,1 +1,59 @@
-<p>departmant-app works!</p>
+<div class="home-container">
+  <nav class="sidebar">
+    <ul>
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/departamento">Departamento</a></li>
+      <li><a routerLink="/maquina">Máquina</a></li>
+      <li><a routerLink="/peca">Peça</a></li>
+      <li><a routerLink="/reparo">Reparo</a></li>
+      <li><a routerLink="/login">Login</a></li>
+    </ul>
+  </nav>
+  <div class="content">
+    @if (departmentEdited) {
+    <div>
+      <h2>{{ departmentEdited.id === 0 ? 'Adicionar' : 'Editar' }} Departamento</h2>
+      <form (ngSubmit)="saveDepartment(departmentEdited)">
+        <div>
+          <label for="nome">Nome:</label>
+          <input id="nome" [(ngModel)]="departmentEdited.name" name="nome" required />
+        </div>
+        <div>
+          <label for="telefone">Telefone:</label>
+          <input id="telefone" [(ngModel)]="departmentEdited.phone" name="telefone" required />
+        </div>
+        <button type="submit" class="add-button">Salvar</button>
+        <button type="button" class="add-button" (click)="cancelEdit()">Cancelar</button>
+      </form>
+    </div>
+    } @else {
+    <div>
+      <h2>Lista de Departamentos</h2>
+      <button class="add-button" (click)="addDepartment()">Adicionar Departamento</button>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (department of departments; track department.id) {
+          <tr>
+            <td>{{ department.id }}</td>
+            <td>{{ department.name }}</td>
+            <td>{{ department.phone }}</td>
+            <td>
+              <button (click)="editDepartment(department)">Editar</button>
+              <button (click)="removeDepartment(department.id)">Excluir</button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    }
+  </div>
+</div>

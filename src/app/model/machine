@@ -1,0 +1,5 @@
+export interface machine {
+    id: Number,
+    name: String,
+    model: String
+}

@@ -26,14 +26,7 @@ export class LoginAppComponent {
       next: (pToken) => {
         if (pToken != null) {
           localStorage.setItem('authToken', pToken.toString());
-          this.displayMessage({
-            status: "Ok",
-            mensagem: "Login realizado com sucesso!"
-          });
-          // Aguarda 1 segundo para exibir a mensagem antes de redirecionar
-          setTimeout(() => {
-            this.router.navigate(['/home']);
-          }, 1000);
+          console.log('Token salvo no localStorage:', pToken);
         } else {
           this.displayMessage({
             status: "Erro",
@@ -49,6 +42,7 @@ export class LoginAppComponent {
       },
       complete: () => {
         console.log('Login request complete.');
+        this.router.navigate(['/home']);
       }
     });
   }
