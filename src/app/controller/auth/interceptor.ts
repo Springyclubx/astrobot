@@ -1,33 +1,22 @@
-import { Injectable } from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor
-} from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { AuthService } from '../auth/auth.service';
+import { HttpInterceptorFn } from '@angular/common/http';
 
-@Injectable()
-export class AuthInterceptor implements HttpInterceptor {
+export const authInterceptor: HttpInterceptorFn = (req, next) => {
+  console.log('Interceptor chamado para a requisição:', req.url);
 
-  constructor(private authService: AuthService) {}
+  const authToken = localStorage.getItem('authToken');
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const authToken = localStorage.getItem('authToken');
-  
-    if (authToken) {
-      console.log('Token encontrado, adicionando ao header...');
-      const authRequest = request.clone({
-        setHeaders: {
-          Authorization: `Bearer ${authToken}`
-        }
-      });
-  
-      return next.handle(authRequest);
-    }
-  
-    console.log('Nenhum token encontrado, enviando requisição sem token...');
-    return next.handle(request);
+  if (authToken) {
+    console.log('Token encontrado, adicionando ao header...');
+    const authRequest = req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${authToken}`
+      }
+    });
+
+    console.log('Requisição clonada com headers:', authRequest.headers);
+    return next(authRequest);
   }
-}
+
+  console.log('Nenhum token encontrado, enviando requisição sem token...');
+  return next(req);
+};

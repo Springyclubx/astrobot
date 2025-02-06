@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { DepartmentService } from '../../controller/department/department.service';
 import { Department } from '../../model/department';
 
@@ -15,9 +15,18 @@ export class DepartamentoComponent implements OnInit {
   departments: Department[] = [];
   departmentEdited: Department | null = null;
 
-  constructor(private departmentService: DepartmentService) {}
+  constructor(private departmentService: DepartmentService, private router: Router) { }
 
   ngOnInit(): void {
+    const authToken = localStorage.getItem('authToken');
+    if (!authToken) {
+      console.log('Usuário não autenticado. Redirecionando para login...');
+      // Redirecione para a página de login
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    console.log('Token no localStorage:', authToken);
     this.departmentService.findAll().subscribe((departments) => {
       this.departments = departments;
     });
